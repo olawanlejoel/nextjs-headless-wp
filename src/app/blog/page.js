@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 async function getPosts() {
 	const response = await fetch(
-		'https://duketest.kinsta.cloud/wp-json/wp/v2/posts'
+		`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts`
 	);
 	const posts = await response.json();
 	return posts;
