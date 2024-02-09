@@ -1,3 +1,16 @@
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+	const response = await fetch(
+		`https://duketest.kinsta.cloud/wp-json/wp/v2/posts`
+	);
+	const posts = await response.json();
+
+	return posts.map((post) => ({
+		postId: post.id.toString(),
+	}));
+}
+
 async function getSinglePost(postId) {
 	const response = await fetch(
 		`https://duketest.kinsta.cloud/wp-json/wp/v2/posts/${postId}`
